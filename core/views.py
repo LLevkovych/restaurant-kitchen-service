@@ -27,11 +27,13 @@ class DishTypeListView(generic.ListView):
 
 class CookListView(generic.ListView):
     model = Cook
+    paginate_by = 10
 
 
 class DishListView(generic.ListView):
     model = Dish
     queryset = Dish.objects.select_related("dish_type")
+    paginate_by = 10
 
 
 class DishDetailView(generic.DetailView):
@@ -40,7 +42,3 @@ class DishDetailView(generic.DetailView):
 
 class CookDetailView(generic.DetailView):
     model = Cook
-
-
-class DishTypeDetailView(generic.DetailView):
-    model = DishType

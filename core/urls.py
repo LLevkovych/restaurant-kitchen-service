@@ -6,7 +6,6 @@ from core.views import (
     CookListView,
     DishListView,
     DishDetailView,
-    DishTypeDetailView,
     CookDetailView
 )
 
@@ -35,12 +34,6 @@ urlpatterns = [
         "dishes/<int:pk>/",
         DishDetailView.as_view(),
         name="dish-detail"
-    ),
-
-path(
-        "dish-types/<int:pk>/",
-        DishTypeDetailView.as_view(),
-        name="dish-type-detail"
     ),
 
 path(
