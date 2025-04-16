@@ -6,12 +6,25 @@ from core.views import (
     CookListView,
     DishListView,
     DishDetailView,
-    CookDetailView
+    CookDetailView,
+    IngredientListView,
+    DishTypeCreateView,
+    DishTypeUpdateView,
+    DishTypeDeleteView,
+    DishCreateView,
+    DishUpdateView,
+    DishDeleteView,
+    IngredientCreateView,
+    IngredientUpdateView,
+    IngredientDeleteView,
+    IngredientDetailView,
 )
 
 
 urlpatterns = [
     path("", index, name="index"),
+
+    #DishTypeUrls
     path(
         "dish-types/",
         DishTypeListView.as_view(),
@@ -19,15 +32,28 @@ urlpatterns = [
     ),
 
     path(
-        "dishes/",
-        DishListView.as_view(),
-        name="dish-list"
+        "dish-type/create/",
+        DishTypeCreateView.as_view(),
+        name="dish-type-create"
     ),
 
     path(
-        "cooks/",
-        CookListView.as_view(),
-        name="cook-list"
+        "dish-type/<int:pk>/update/",
+        DishTypeUpdateView.as_view(),
+        name="dish-type-update"
+    ),
+
+    path(
+        "dish-type/<int:pk>/delete/",
+        DishTypeDeleteView.as_view(),
+        name="dish-type-delete"
+    ),
+
+    #DishUrls
+    path(
+        "dishes/",
+        DishListView.as_view(),
+        name="dish-list"
     ),
 
     path(
@@ -36,10 +62,66 @@ urlpatterns = [
         name="dish-detail"
     ),
 
-path(
+    path(
+        "dish/create/",
+        DishCreateView.as_view(),
+        name="dish-create"
+    ),
+
+    path(
+        "dish/<int:pk>/update/",
+        DishUpdateView.as_view(),
+        name="dish-update"
+    ),
+
+    path(
+        "dish/<int:pk>/delete/",
+        DishDeleteView.as_view(),
+        name="dish-delete"
+    ),
+
+    #CooksUrls
+    path(
+        "cooks/",
+        CookListView.as_view(),
+        name="cook-list"
+    ),
+
+
+    path(
         "cooks/<int:pk>/",
         CookDetailView.as_view(),
         name="cook-detail"
+    ),
+
+    #IngredientUrls
+    path(
+        "ingredients/",
+         IngredientListView.as_view(),
+        name="ingredient-list"
+    ),
+
+    path("ingredients/<int:pk>/",
+         IngredientDetailView.as_view(),
+         name="ingredient-detail"
+         ),
+
+    path(
+        "ingredient/create/",
+        IngredientCreateView.as_view(),
+        name="ingredient-create"
+    ),
+
+    path(
+        "ingredient/<int:pk>/update/",
+        IngredientUpdateView.as_view(),
+        name="ingredient-update"
+    ),
+
+    path(
+        "ingredient/<int:pk>/delete/",
+        IngredientDeleteView.as_view(),
+        name="ingredient-delete"
     ),
 ]
 

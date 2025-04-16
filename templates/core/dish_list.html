@@ -1,13 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1> Dishes List</h1>
+  <h1>Dishes List</h1>
+
+  <p>
+    <a href="{% url 'core:dish-create' %}">➕ Create New Dish</a>
+  </p>
+
   {% if dish_list %}
     <ul>
       {% for dish in dish_list %}
-        <li><a href="{% url 'core:dish-detail' dish.id %}">{{ dish.name }} ({{ dish.dish_type }}, {{ dish.price }})</a>
+        <li>
+          <a href="{% url 'core:dish-detail' dish.id %}">
+            {{ dish.name }} ({{ dish.dish_type }}, ${{ dish.price }})
+          </a>
+          |
+          <a href="{% url 'core:dish-update' dish.id %}">✏️ Edit</a>
+          |
+          <a href="{% url 'core:dish-delete' dish.id %}">🗑️ Delete</a>
         </li>
       {% endfor %}
     </ul>
+  {% else %}
+    <p>No dishes available.</p>
   {% endif %}
 {% endblock %}
