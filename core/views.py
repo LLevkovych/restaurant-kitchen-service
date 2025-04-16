@@ -11,7 +11,7 @@ def index(request):
     num_dish_types = DishType.objects.count()
 
     context = {
-        "num_cooks": num_cooks,
+        "num_cook": num_cooks,
         "num_dishes": num_dishes,
         "num_dish_types": num_dish_types,
     }
@@ -31,3 +31,16 @@ class CookListView(generic.ListView):
 
 class DishListView(generic.ListView):
     model = Dish
+    queryset = Dish.objects.select_related("dish_type")
+
+
+class DishDetailView(generic.DetailView):
+    model = Dish
+
+
+class CookDetailView(generic.DetailView):
+    model = Cook
+
+
+class DishTypeDetailView(generic.DetailView):
+    model = DishType
