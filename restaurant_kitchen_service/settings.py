@@ -106,6 +106,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "core.Cook"
 
+
+LOGIN_URL = "/auth/login/"
+LOGOUT_URL = "/auth/logout/"
+LOGIN_REDIRECT_URL = "/auth/profile/"
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 

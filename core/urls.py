@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from core.views import (
     index,
@@ -122,6 +122,11 @@ urlpatterns = [
         "ingredient/<int:pk>/delete/",
         IngredientDeleteView.as_view(),
         name="ingredient-delete"
+    ),
+
+    path(
+        "profile/",
+        include("authentication.urls")
     ),
 ]
 
