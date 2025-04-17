@@ -1,26 +1,27 @@
 {% if is_paginated %}
-  <ul class="pagination d-inline-flex align-items-center">
-    {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.previous_page_number }}&query={{ request.GET.query }}">Prev</a>
+  <div class="pagination-container d-flex justify-content-between align-items-center">
+    <ul class="pagination d-inline-flex">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}&query={{ request.GET.query }}"
+             aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      {% endif %}
+
+      <li class="page-item active">
+        <span class="page-link">{{ page_obj.number }} of {{ paginator.num_pages }}</span>
       </li>
-    {% endif %}
 
-    <li class="page-item active">
-      <span class="page-link">{{ page_obj.number }} of {{ paginator.num_pages }}</span>
-    </li>
-
-    {% if page_obj.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.next_page_number }}&query={{ request.GET.query }}">Next</a>
-      </li>
-    {% endif %}
-  </ul>
-
-  <form method="get" class="form-inline d-inline-flex align-items-center" style="gap: 10px;">
-    <label for="page_input" class="mb-0">Go to page:</label>
-    <input type="number" min="1" max="{{ paginator.num_pages }}" name="page" id="page_input"
-           class="form-control form-control-sm" value="{{ page_obj.number }}" style="width: 80px;" required>
-    <button type="submit" class="btn btn-sm btn-primary">Go</button>
-  </form>
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}&query={{ request.GET.query }}"
+             aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
 {% endif %}

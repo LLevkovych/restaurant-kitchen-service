@@ -2,11 +2,17 @@
 
 {% block content %}
   <div class="container mt-4">
-    <h1>Are you sure you want to delete the ingredient "{{ ingredient.name }}"?</h1>
-    <form method="post">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Yes, Delete</button>
-      <a href="{% url 'ingredient_list' %}" class="btn btn-secondary">Cancel</a>
-    </form>
+    <div class="card shadow-sm p-4">
+      <h2 class="text-danger mb-4">Delete Ingredient</h2>
+      <p>Are you sure you want to delete the ingredient "<strong>{{ ingredient.name }}</strong>"?</p>
+
+      <form method="post" class="mt-3">
+        {% csrf_token %}
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-danger w-100">Yes, Delete</button>
+          <a href="{% url 'core:ingredient-list' %}" class="btn btn-secondary w-100">Cancel</a>
+        </div>
+      </form>
+    </div>
   </div>
 {% endblock %}

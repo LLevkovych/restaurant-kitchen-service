@@ -1,12 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1> Cooks List</h1>
-  {% if cook_list %}
-  <ul>
-    {% for cook in cook_list %}
-      <li><a href="{% url 'core:cook-detail' cook.id %}">{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</a></li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+  <div class="container mt-4">
+    <h1 class="mb-4 text-dark">Cooks</h1>
+
+    <!-- Search form below the title -->
+    <form method="GET" action="{% url 'core:cook-list' %}" class="form-inline mb-3">
+      <div class="form-group w-100">
+        <label for="cook-query" class="sr-only">Search Cooks</label>
+        <input type="text" id="cook-query" name="query" value="{{ request.GET.query }}" class="form-control w-100"
+               placeholder="Search Cooks...">
+      </div>
+      <button type="submit" class="btn btn-primary mt-2 w-100">Search</button>
+    </form>
+
+    {% if cook_list %}
+      <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th class="text-center" style="width: 200px;">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cook in cook_list %}
+          <tr>
+            <td>{{ cook.username }}</td>
+            <td class="text-center">
+              <a href="{% url 'core:cook-detail' cook.id %}" class="btn btn-sm btn-info">👤 View</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No cooks found.</p>
+    {% endif %}
+
+    {% if is_paginated %}
+      <div class="pagination-container mb-4">
+        {% include 'includes/pagination.html' %}
+      </div>
+    {% endif %}
+  </div>
 {% endblock %}
