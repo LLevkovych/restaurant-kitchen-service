@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "crispy_forms",
     "bootstrap4",
+    "widget_tweaks",
     "core",
 ]
 
