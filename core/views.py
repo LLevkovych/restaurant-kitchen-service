@@ -17,7 +17,6 @@ def index(request):
     num_cooks = Cook.objects.count()
     num_dishes = Dish.objects.count()
     num_dish_types = DishType.objects.count()
-    num_ingredients = Ingredient.objects.count()
     context = {
         "num_cooks": num_cooks,
         "num_dishes": num_dishes,
@@ -29,7 +28,7 @@ def index(request):
 
 class DishTypeListView(generic.ListView):
     model = DishType
-    template_name = "core/dish_type_list_view.html"
+    template_name = "core/dish_type_list.html"
     context_object_name = "dish_type_list"
 
 
@@ -62,20 +61,24 @@ class CookDetailView(generic.DetailView):
     model = Cook
 
 
-class DishTypeCreateView(generic.CreateView):
-    model = DishType
-    fields = ['name']
-
-
-class DishTypeUpdateView(generic.UpdateView):
+class DishTypeCreateView(CreateView):
     model = DishType
     fields = ["name"]
-    success_url = reverse_lazy("dish-type-list")
+    template_name = "core/dish_type_form.html"
+    success_url = reverse_lazy("core:dish-type-list")
 
 
-class DishTypeDeleteView(generic.DeleteView):
+class DishTypeUpdateView(UpdateView):
     model = DishType
-    success_url = reverse_lazy("dish-type-list")
+    fields = ["name"]
+    template_name = "core/dish_type_form.html"
+    success_url = reverse_lazy("core:dish-type-list")
+
+
+class DishTypeDeleteView(DeleteView):
+    model = DishType
+    template_name = "core/dish_type_confirm_delete.html"
+    success_url = reverse_lazy("core:dish-type-list")
 
 
 class IngredientCreateView(CreateView):
@@ -103,15 +106,18 @@ class IngredientDeleteView(DeleteView):
 class DishCreateView(CreateView):
     model = Dish
     fields = ["name", "description", "price", "dish_type", "cooks", "ingredients"]
-    success_url = reverse_lazy("dish-list")
+    template_name = "core/dish_form.html"
+    success_url = reverse_lazy("core:dish-list")
 
 
 class DishUpdateView(UpdateView):
     model = Dish
     fields = ["name", "description", "price", "dish_type", "cooks", "ingredients"]
-    success_url = reverse_lazy("dish-list")
+    template_name = "core/dish_form.html"
+    success_url = reverse_lazy("core:dish-list")
 
 
 class DishDeleteView(DeleteView):
     model = Dish
-    success_url = reverse_lazy("dish-list")
+    template_name = "core/dish_confirm_delete.html"
+    success_url = reverse_lazy("core:dish-list")

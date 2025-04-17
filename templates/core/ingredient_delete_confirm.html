@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1>Are you sure you want to delete the ingredient "{{ ingredient.name }}"?</h1>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Yes, Delete</button>
+      <a href="{% url 'ingredient_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

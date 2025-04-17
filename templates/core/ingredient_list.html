@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1 class="mb-4">Ingredients</h1>
+
+    <div class="mb-3">
+      <a href="{%  url 'core:ingredient-create' %}" class="btn btn-success btn-sm">
+        ➕ Add a new ingredient
+      </a>
+    </div>
+
+    {% if ingredient_list %}
+      <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>Name</th>
+            <th class="text-center" style="width: 200px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ingredient in ingredient_list %}
+            <tr>
+              <td>
+                <a href="{% url 'core:ingredient-detail' ingredient.id %}">
+                  {{ ingredient.name }}
+                </a>
+              </td>
+              <td class="text-center">
+                <a href="{%  url 'core:ingredient-update' ingredient.id %}" class="btn btn-primary btn-sm">✏️ Edit</a>
+                <a href="{%  url 'core:ingredient-delete' ingredient.id %}" class="btn btn-danger btn-sm">🗑️ Delete</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No ingredients found.</p>
+    {% endif %}
+  </div>
+{% endblock %}
