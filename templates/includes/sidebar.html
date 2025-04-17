@@ -1,6 +1,18 @@
 <ul class="sidebar-nav">
+  {% if user.is_authenticated %}
+    <li class="mt-3">
+      <a href="{% url 'authentication:profile' %}" class="btn btn-outline-secondary btn-sm btn-block">My Profile</a>
+    </li>
+    <li class="mt-2">
+      <form method="post" action="{% url 'authentication:logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+      </form>
+    </li>
+  {% endif %}
+  <br>
   <li>
-    <a href="{% url "core:index" %}">Home</a>
+    <a href="{% url 'core:index' %}">Home</a>
   </li>
   <li>
     <a href="{% url 'core:cook-list' %}">All cooks</a>
@@ -14,4 +26,5 @@
   <li>
     <a href="{% url 'core:ingredient-list' %}">All ingredients</a>
   </li>
+
 </ul>
