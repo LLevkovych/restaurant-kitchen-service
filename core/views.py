@@ -32,7 +32,7 @@ class DishTypeListView(generic.ListView):
         query = self.request.GET.get("query", "")
         if query:
             return DishType.objects.filter(Q(name__icontains=query))
-        return DishType.objects.all() 
+        return DishType.objects.all()
 
 
 class CookListView(generic.ListView):
@@ -127,14 +127,28 @@ class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
     model = Dish
-    fields = ["name", "description", "price", "dish_type", "cooks", "ingredients"]
+    fields = [
+        "name",
+        "description",
+        "price",
+        "dish_type",
+        "cooks",
+        "ingredients"
+    ]
     template_name = "core/dish_form.html"
     success_url = reverse_lazy("core:dish-list")
 
 
 class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Dish
-    fields = ["name", "description", "price", "dish_type", "cooks", "ingredients"]
+    fields = [
+        "name",
+        "description",
+        "price",
+        "dish_type",
+        "cooks",
+        "ingredients"
+    ]
     template_name = "core/dish_form.html"
     success_url = reverse_lazy("core:dish-list")
 

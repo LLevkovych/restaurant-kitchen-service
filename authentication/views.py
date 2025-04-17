@@ -32,8 +32,4 @@ def profile_update(request):
             return redirect("authentication:profile")
     else:
         form = ProfileUpdateForm(instance=request.user)
-    return render(
-        request,
-        "registration/profile_update.html",
-        {"form": form}
-    )
+    return render(request, "registration/profile_update.html", {"form": form})

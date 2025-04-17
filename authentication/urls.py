@@ -8,40 +8,37 @@ urlpatterns = [
         "login/",
         auth_views.LoginView.as_view(
             template_name="registration/login.html",
-            next_page=reverse_lazy("authentication:profile")  # <-- це важливо
+            next_page=reverse_lazy("authentication:profile"),  # <-- це важливо
         ),
-        name="login"
+        name="login",
     ),
-
     path(
         "logout/",
-        auth_views.LogoutView.as_view(next_page=reverse_lazy("authentication:login")),
-        name="logout"
+        auth_views.LogoutView.as_view(
+            next_page=reverse_lazy("authentication:login")
+        ),
+        name="logout",
     ),
-
     path(
         "register/",
         views.CookRegisterView.as_view(),
         name="register"
     ),
-
     path(
         "profile/",
         views.ProfileView.as_view(),
         name="profile"
     ),
-
     path(
         "change-password/",
-         views.ChangePasswordView.as_view(),
-         name="change-password"
+        views.ChangePasswordView.as_view(),
+        name="change-password"
     ),
-
     path(
         "profile/update/",
-         views.profile_update,
-         name="profile-update"
+        views.profile_update,
+        name="profile-update"
     ),
 ]
 
-app_name = 'authentication'
+app_name = "authentication"

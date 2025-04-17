@@ -22,9 +22,12 @@ from core.views import (
 
 
 urlpatterns = [
-    path("", index, name="index"),
+    path(
+        "", index,
+        name="index"
+    ),
 
-    #DishTypeUrls
+    # DishTypeUrls
     path(
         "dish-types/",
         DishTypeListView.as_view(),
@@ -40,16 +43,14 @@ urlpatterns = [
     path(
         "dish-type/<int:pk>/update/",
         DishTypeUpdateView.as_view(),
-        name="dish-type-update"
+        name="dish-type-update",
     ),
-
     path(
         "dish-type/<int:pk>/delete/",
         DishTypeDeleteView.as_view(),
-        name="dish-type-delete"
+        name="dish-type-delete",
     ),
-
-    #DishUrls
+    # DishUrls
     path(
         "dishes/",
         DishListView.as_view(),
@@ -80,13 +81,12 @@ urlpatterns = [
         name="dish-delete"
     ),
 
-    #CooksUrls
+    # CooksUrls
     path(
         "cooks/",
         CookListView.as_view(),
         name="cook-list"
     ),
-
 
     path(
         "cooks/<int:pk>/",
@@ -94,40 +94,34 @@ urlpatterns = [
         name="cook-detail"
     ),
 
-    #IngredientUrls
+    # IngredientUrls
     path(
         "ingredients/",
-         IngredientListView.as_view(),
+        IngredientListView.as_view(),
         name="ingredient-list"
     ),
 
-    path("ingredients/<int:pk>/",
-         IngredientDetailView.as_view(),
-         name="ingredient-detail"
-         ),
-
+    path(
+        "ingredients/<int:pk>/",
+        IngredientDetailView.as_view(),
+        name="ingredient-detail",
+    ),
     path(
         "ingredient/create/",
         IngredientCreateView.as_view(),
         name="ingredient-create"
     ),
-
     path(
         "ingredient/<int:pk>/update/",
         IngredientUpdateView.as_view(),
-        name="ingredient-update"
+        name="ingredient-update",
     ),
-
     path(
         "ingredient/<int:pk>/delete/",
         IngredientDeleteView.as_view(),
-        name="ingredient-delete"
+        name="ingredient-delete",
     ),
-
-    path(
-        "profile/",
-        include("authentication.urls")
-    ),
+    path("profile/", include("authentication.urls")),
 ]
 
 app_name = "core"

@@ -3,6 +3,7 @@ from django import forms
 
 from core.models import Cook
 
+
 class CookCreationForm(UserCreationForm):
     class Meta:
         model = Cook
@@ -12,4 +13,4 @@ class CookCreationForm(UserCreationForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Cook
-        fields = ['first_name', 'last_name', 'years_of_experience']
+        fields = ["first_name", "last_name", "years_of_experience"]
