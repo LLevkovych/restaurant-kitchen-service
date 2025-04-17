@@ -13,7 +13,6 @@
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
 
-
     {% if user.is_authenticated %}
       <div class="mb-3">
         <a href="{% url 'core:ingredient-create' %}" class="btn btn-success btn-sm">
@@ -52,6 +51,10 @@
       <p>No ingredients found.</p>
     {% endif %}
 
-    {% include 'includes/pagination.html' %}
+    {% if is_paginated %}
+    <div class="pagination-container mb-4">
+      {% include 'includes/pagination.html' %}
+    </div>
+    {% endif %}
   </div>
 {% endblock %}

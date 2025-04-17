@@ -1,5 +1,5 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -11,17 +11,17 @@ from authentication.forms import CookCreationForm, ProfileUpdateForm
 class CookRegisterView(generic.CreateView):
     form_class = CookCreationForm
     template_name = "registration/register.html"
-    success_url = reverse_lazy("login")
+    success_url = reverse_lazy("authentication:login")
 
 
-class ProfileView(generic.TemplateView):
+class ProfileView(LoginRequiredMixin, generic.TemplateView):
     template_name = "registration/profile.html"
 
 
 class ChangePasswordView(PasswordChangeView):
     form_class = PasswordChangeForm
     template_name = "registration/change_password.html"
-    success_url = reverse_lazy("authentication:profile")  # <--- ОНОВЛЕНО
+    success_url = reverse_lazy("authentication:profile")
 
 
 def profile_update(request):
@@ -29,7 +29,7 @@ def profile_update(request):
         form = ProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect("authentication:profile")  # <--- ОНОВЛЕНО
+            return redirect("authentication:profile")
     else:
         form = ProfileUpdateForm(instance=request.user)
     return render(

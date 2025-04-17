@@ -17,7 +17,6 @@
     {% endif %}
   </ul>
 
-  <!-- Форма для переходу на конкретну сторінку -->
   <form method="get" class="form-inline d-inline-flex align-items-center" style="gap: 10px;">
     <label for="page_input" class="mb-0">Go to page:</label>
     <input type="number" min="1" max="{{ paginator.num_pages }}" name="page" id="page_input"
