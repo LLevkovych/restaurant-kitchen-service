@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% load static %}
+  {% block title %}
+    <title>Kitchen Service</title>
+  {% endblock %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 bg-light min-vh-100">
+      <ul class="sidebar-nav list-unstyled">
+        <li>
+          <a class="nav-link" href="{% url 'core:index' %}">Home</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'core:cook-list' %}">All cooks</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'core:dish-list' %}">All dishes</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'core:dish-type-list' %}">All dish types</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'core:ingredient-list' %}">All ingredients</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      {% include 'includes/navbar.html' %}
+      <div class="content-container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'includes/login_modal.html' %}
+{% include 'includes/register_modal.html' %}
+
+{% block extra_js %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+          integrity="sha384-KyZXEJ4IQ2Ra2uS7n3Xt7mdW1y4V1FYw5j5lB2Q8DhD5Tz4d8mYc0OlkLl9Rxx0E"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-pzjw8f+ua7Kw1TIq0du6Xr+6m9wqzNYF5WgDw1Jt8zV4pQ9XwD3r58eVtLqljN/f"
+          crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>

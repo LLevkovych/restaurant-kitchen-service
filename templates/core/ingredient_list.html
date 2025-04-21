@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1 class="mb-4 text-dark d-flex justify-content-between align-items-center">
+      Ingredients
+      {% if user.is_authenticated %}
+        <a href="{% url 'core:ingredient-create' %}" class="btn btn-success btn-sm">➕ Add Ingredient</a>
+      {% endif %}
+    </h1>
+
+    <!-- Search form below the title and create button -->
+    <form method="GET" action="{% url 'core:ingredient-list' %}" class="form-inline mb-3">
+      <div class="form-group w-100">
+        <label for="ingredient-query" class="sr-only">Search Ingredients</label>
+        <input type="text" id="ingredient-query" name="query" value="{{ request.GET.query }}" class="form-control w-100"
+               placeholder="Search Ingredients...">
+      </div>
+      <button type="submit" class="btn btn-primary mt-2 w-100">Search</button>
+    </form>
+
+    {% if ingredient_list %}
+      <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th class="text-center" style="width: 200px;">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ingredient in ingredient_list %}
+          <tr>
+            <td>
+              <a href="{% url 'core:ingredient-detail' ingredient.id %}">
+                {{ ingredient.name }}
+              </a>
+            </td>
+            {% if user.is_authenticated %}
+              <td class="text-center">
+                <a href="{% url 'core:ingredient-update' ingredient.id %}" class="btn btn-sm btn-primary">✏️ Edit</a>
+                <a href="{% url 'core:ingredient-delete' ingredient.id %}" class="btn btn-sm btn-danger">🗑️ Delete</a>
+              </td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No ingredients found.</p>
+    {% endif %}
+
+    {% if is_paginated %}
+      <div class="pagination-container mb-4">
+        {% include 'includes/pagination.html' %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

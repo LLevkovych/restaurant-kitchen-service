@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="card profile-card shadow-sm p-4 mb-4">
+      <h2 class="text-primary mb-3">
+        👨‍🍳 {{ cook.first_name }} {{ cook.last_name }}
+      </h2>
+      <p class="mb-1"><strong>Experience:</strong> {{ cook.years_of_experience }}
+        year{{ cook.years_of_experience|pluralize }}</p>
+    </div>
+
+    <div class="card shadow-sm p-4">
+      <h4 class="mb-3 text-secondary">🍽️ Dishes {{ cook.first_name }} can cook:</h4>
+
+      {% if cook.dishes.all %}
+        <div class="list-group">
+          {% for dish in cook.dishes.all %}
+            <a href="{% url 'core:dish-detail' pk=dish.id %}" class="list-group-item list-group-item-action">
+              {{ dish.name }}
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-muted">There are no dishes that {{ cook.first_name }} can cook.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

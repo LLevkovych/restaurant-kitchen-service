@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Home page</title>
+{% endblock %}
+
+{% block content %}
+  <div class="home-container mt-4">
+    <h1 class="text-primary mb-4">Welcome to Kitchen Service 👨‍🍳</h1>
+    <p class="lead mb-5">Manage your cooks, dishes, and ingredients with ease.</p>
+
+    <div class="row text-center stats-cards">
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm stat-card">
+          <div class="card-body">
+            <h5 class="card-title text-uppercase text-muted">Cooks</h5>
+            <h2 class="card-number text-primary">{{ num_cooks }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm stat-card">
+          <div class="card-body">
+            <h5 class="card-title text-uppercase text-muted">Dishes</h5>
+            <h2 class="card-number text-success">{{ num_dishes }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm stat-card">
+          <div class="card-body">
+            <h5 class="card-title text-uppercase text-muted">Dish Types</h5>
+            <h2 class="card-number text-info">{{ num_dish_types }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

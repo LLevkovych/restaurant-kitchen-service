@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="card shadow-sm p-4">
+      <h2 class="text-primary mb-4">My Profile</h2>
+
+      <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+        <li class="list-group-item"><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</li>
+        <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+        <li class="list-group-item"><strong>Years of experience:</strong> {{ user.years_of_experience }}</li>
+      </ul>
+
+      <div class="d-flex gap-2 justify-content-end">
+        <a href="{% url 'authentication:profile-update' %}" class="btn btn-info">✏️ Edit Profile</a>
+        <a href="{% url 'authentication:change-password' %}" class="btn btn-warning">🔒 Change Password</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
