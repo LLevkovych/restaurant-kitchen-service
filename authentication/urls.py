@@ -36,7 +36,7 @@ urlpatterns = [
     ),
     path(
         "profile/update/",
-        views.profile_update,
+        views.ProfileUpdateView.as_view(),
         name="profile-update"
     ),
 ]

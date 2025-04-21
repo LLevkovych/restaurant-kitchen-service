@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "bootstrap4",
     "widget_tweaks",
     "core",
+    "authentication",
 ]
 
 MIDDLEWARE = [
@@ -104,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "core.Cook"
+AUTH_USER_MODEL = "authentication.Cook"
 
 
 LOGIN_URL = "/auth/login/"

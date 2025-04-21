@@ -210,7 +210,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 1,
     "fields": {
       "username": "user1",
@@ -225,7 +225,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 2,
     "fields": {
       "username": "user2",
@@ -240,7 +240,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 3,
     "fields": {
       "username": "user3",
@@ -255,7 +255,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 4,
     "fields": {
       "username": "user4",
@@ -270,7 +270,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 5,
     "fields": {
       "username": "user5",
@@ -285,7 +285,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 6,
     "fields": {
       "username": "user6",
@@ -300,7 +300,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 7,
     "fields": {
       "username": "user7",
@@ -315,7 +315,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 8,
     "fields": {
       "username": "user8",
@@ -330,7 +330,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 9,
     "fields": {
       "username": "user9",
@@ -345,7 +345,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 10,
     "fields": {
       "username": "user10",
@@ -360,7 +360,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 11,
     "fields": {
       "username": "user11",
@@ -375,7 +375,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 12,
     "fields": {
       "username": "user12",
@@ -390,7 +390,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 13,
     "fields": {
       "username": "user13",
@@ -405,7 +405,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 14,
     "fields": {
       "username": "user14",
@@ -420,7 +420,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 15,
     "fields": {
       "username": "user15",
@@ -435,7 +435,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 16,
     "fields": {
       "username": "user16",
@@ -450,7 +450,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 17,
     "fields": {
       "username": "user17",
@@ -465,7 +465,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 18,
     "fields": {
       "username": "user18",
@@ -480,7 +480,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 19,
     "fields": {
       "username": "user19",
@@ -495,7 +495,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 20,
     "fields": {
       "username": "user20",
@@ -510,7 +510,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 21,
     "fields": {
       "username": "user21",
@@ -525,7 +525,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 22,
     "fields": {
       "username": "user22",
@@ -540,7 +540,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 23,
     "fields": {
       "username": "user23",
@@ -555,7 +555,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 24,
     "fields": {
       "username": "user24",
@@ -570,7 +570,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 25,
     "fields": {
       "username": "user25",
@@ -585,7 +585,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 26,
     "fields": {
       "username": "user26",
@@ -600,7 +600,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 27,
     "fields": {
       "username": "user27",
@@ -615,7 +615,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 28,
     "fields": {
       "username": "user28",
@@ -630,7 +630,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 29,
     "fields": {
       "username": "user29",
@@ -645,7 +645,7 @@
     }
   },
   {
-    "model": "core.cook",
+    "model": "authentication.cook",
     "pk": 30,
     "fields": {
       "username": "user30",

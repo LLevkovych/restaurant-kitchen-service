@@ -1,12 +1,12 @@
 html, body, .container-fluid {
   margin: 0;
   padding: 0;
-  height: 100%; /* Додаємо висоту 100% для всього сайту */
+  height: 100%;
 }
 
 body {
-  margin-left: 220px; /* Забезпечуємо, щоб основний контент не перекривав бокову панель */
-  padding-top: 60px; /* Відступ для верхньої панелі */
+  margin-left: 220px;
+  padding-top: 60px;
 }
 
 h1, h2, h3 {
@@ -31,28 +31,25 @@ h3 {
 }
 
 .row {
-  margin: 0; /* Прибираємо зазор між колонками */
+  margin: 0;
 }
 
-/* --------------------------------------------------------
-   Навігаційна панель (Navbar)
--------------------------------------------------------- */
 
 .navbar {
-  background-color: #1d2d50 !important; /* Темний фон */
-  border-bottom: 0 !important; /* Прибираємо кордони */
-  margin-bottom: 0 !important; /* Прибираємо зазор */
-  padding: 0 15px !important; /* Повертаємо відступ справа */
-  width: 100%; /* Розтягуємо на всю ширину */
-  position: fixed; /* Фіксуємо верхню панель */
+  background-color: #1d2d50 !important;
+  border-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 15px !important;
+  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* Додаємо індекс для перекриття інших елементів */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легка тінь для верхньої панелі */
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .navbar-brand {
-  color: #ffffff !important; /* Білий текст для назви */
+  color: #ffffff !important;
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -60,11 +57,11 @@ h3 {
 }
 
 .navbar .navbar-toggler {
-  border-color: #007bff; /* Синя рамка для кнопки меню */
+  border-color: #007bff;
 }
 
 .navbar .navbar-toggler-icon {
-  background-color: #007bff; /* Синій колір для іконки меню */
+  background-color: #007bff;
 }
 
 .navbar-nav .nav-item {
@@ -72,36 +69,32 @@ h3 {
 }
 
 .navbar-nav .nav-link {
-  color: #ffffff !important; /* Білий текст для посилань */
+  color: #ffffff !important;
   font-size: 1.1rem;
   font-weight: 500;
   padding: 10px 15px;
 }
 
 .navbar-nav .nav-link:hover {
-  background-color: #007bff; /* Синій фон при наведенні */
+  background-color: #007bff;
   color: white;
   border-radius: 5px;
 }
 
 
-/* --------------------------------------------------------
-   Бокова панель (Sidebar)
--------------------------------------------------------- */
-
 .bg-light {
-  background-color: #1d2d50 !important; /* Темний фон для бокової панелі */
-  margin: 0; /* Прибираємо зазор */
-  padding: 0; /* Прибираємо відступи */
-  min-height: 100vh; /* Забезпечуємо, щоб бокова панель займала всю висоту */
-  width: 220px; /* Ширина бокової панелі */
-  border: 0; /* Прибираємо будь-які бордери */
-  position: fixed; /* Фіксована позиція */
-  top: 60px; /* Додаємо відступ зверху, щоб не перекривалась верхньою панеллю */
+  background-color: #1d2d50 !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 220px;
+  border: 0;
+  position: fixed;
+  top: 60px;
   left: 0;
-  z-index: 999; /* Робимо так, щоб бокова панель була поверх інших елементів */
-  overflow-y: auto; /* Прокручування по вертикалі */
-  height: calc(100vh - 60px); /* Висота бокової панелі, що зменшується на висоту верхньої панелі */
+  z-index: 999;
+  overflow-y: auto;
+  height: calc(100vh - 60px);
 }
 
 .sidebar-nav {
@@ -122,58 +115,43 @@ h3 {
   border-radius: 5px;
 }
 
-/* --------------------------------------------------------
-   Контейнер для контенту
--------------------------------------------------------- */
-
 .content-container {
-  margin-top: 60px; /* Залишаємо відступ для верхньої панелі */
-  padding: 0;
-  margin-left: 220px; /* Відступ зліва, щоб контент не перекривав бокову панель */
+  margin-top: 60px;
+  margin-left: 220px;
 }
 
-/* --------------------------------------------------------
-   Модальні вікна
--------------------------------------------------------- */
-
-/* Модальні кнопки (Login, Register) */
 .navbar .nav-link[data-toggle="modal"]:hover {
-  background-color: #28a745; /* Зелений фон для кнопок логіну та реєстрації */
+  background-color: #28a745;
   color: white;
   border-radius: 5px;
 }
 
-/* --------------------------------------------------------
-   Темний фон бокової панелі та верхньої панелі
--------------------------------------------------------- */
-
 .navbar {
-  background-color: #1d2d50 !important; /* Темний фон верхньої панелі */
+  background-color: #1d2d50 !important;
   border-bottom: 0;
-  margin-bottom: 0 !important; /* Важливо: прибрати відступи */
-  padding-right: 15px !important; /* Відступ справа від верхньої панелі */
+  margin-bottom: 0 !important;
+  padding-right: 15px !important;
 }
 
 .navbar .navbar-brand {
-  color: #ffffff !important; /* Білий текст для назви */
-}
-
-.navbar-nav .nav-link {
-  color: #ffffff !important; /* Білий текст для посилань */
-}
-
-.navbar-nav .nav-link:hover {
-  background-color: #007bff; /* Синій фон при наведенні */
-  color: white;
-  border-radius: 5px;
-}
-
-/* Кнопки для модальних вікон */
-.logout-btn, .btn-link {
   color: #ffffff !important;
 }
 
-.logout-btn:hover {
-  background-color: #dc3545;
-  color: white;
-}
+  .navbar-nav .nav-link {
+    color: #ffffff !important;
+  }
+
+  .navbar-nav .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .logout-btn, .btn-link {
+    color: #ffffff !important;
+  }
+
+  .logout-btn:hover {
+    background-color: #dc3545;
+    color: white;
+  }

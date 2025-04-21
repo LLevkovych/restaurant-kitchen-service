@@ -1,11 +1,12 @@
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic.edit import UpdateView
 
 from authentication.forms import CookCreationForm, ProfileUpdateForm
+from authentication.models import Cook
 
 
 class CookRegisterView(generic.CreateView):
@@ -18,18 +19,17 @@ class ProfileView(LoginRequiredMixin, generic.TemplateView):
     template_name = "registration/profile.html"
 
 
-class ChangePasswordView(PasswordChangeView):
+class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
     form_class = PasswordChangeForm
     template_name = "registration/change_password.html"
     success_url = reverse_lazy("authentication:profile")
 
 
-def profile_update(request):
-    if request.method == "POST":
-        form = ProfileUpdateForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect("authentication:profile")
-    else:
-        form = ProfileUpdateForm(instance=request.user)
-    return render(request, "registration/profile_update.html", {"form": form})
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = Cook
+    form_class = ProfileUpdateForm
+    template_name = "registration/profile_update.html"
+    success_url = reverse_lazy("authentication:profile")
+
+    def get_object(self, queryset=None):
+        return self.request.user

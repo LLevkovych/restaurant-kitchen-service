@@ -1,9 +1,8 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
 
-from core.models import DishType, Dish, Cook
-
+from core.models import DishType, Dish, Ingredient
 
 admin.site.register(DishType)
 admin.site.register(Dish)
-admin.site.register(Cook, UserAdmin)
+admin.site.register(Ingredient)
+

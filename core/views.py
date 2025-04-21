@@ -1,12 +1,10 @@
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordChangeView
 from django.db.models import Q
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-
-from core.models import DishType, Cook, Dish, Ingredient
+from authentication.models import Cook
+from core.models import DishType, Dish, Ingredient
 
 
 def index(request):
@@ -21,6 +19,30 @@ def index(request):
     return render(request, "core/index.html", context=context)
 
 
+class CookListView(LoginRequiredMixin, generic.ListView):
+    model = Cook
+    paginate_by = 10
+    template_name = "core/cook_list.html"
+    context_object_name = "cook_list"
+
+    def get_queryset(self):
+        query = self.request.GET.get("query", "")
+        queryset = Cook.objects.all()
+        if query:
+            queryset = queryset.filter(
+                Q(username__icontains=query) |
+                Q(first_name__icontains=query) |
+                Q(last_name__icontains=query)
+            )
+        return queryset
+
+
+class CookDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Cook
+    template_name = "core/cook_detail.html"
+    context_object_name = "cook"
+
+
 class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "core/dish_type_list.html"
@@ -28,22 +50,11 @@ class DishTypeListView(generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-
         query = self.request.GET.get("query", "")
+        queryset = DishType.objects.all()
         if query:
-            return DishType.objects.filter(Q(name__icontains=query))
-        return DishType.objects.all()
-
-
-class CookListView(generic.ListView):
-    model = Cook
-    paginate_by = 10
-
-    def get_queryset(self):
-        query = self.request.GET.get("query", "")
-        if query:
-            return Cook.objects.filter(name__icontains=query)
-        return Cook.objects.all()
+            queryset = queryset.filter(Q(name__icontains=query))
+        return queryset
 
 
 class IngredientListView(generic.ListView):
@@ -53,9 +64,10 @@ class IngredientListView(generic.ListView):
 
     def get_queryset(self):
         query = self.request.GET.get("query", "")
+        queryset = Ingredient.objects.all()
         if query:
-            return Ingredient.objects.filter(name__icontains=query)
-        return Ingredient.objects.all()
+            queryset = queryset.filter(name__icontains=query)
+        return queryset
 
 
 class IngredientDetailView(generic.DetailView):
@@ -69,19 +81,16 @@ class DishListView(generic.ListView):
 
     def get_queryset(self):
         query = self.request.GET.get("query", "")
+        queryset = Dish.objects.all()
         if query:
-            return Dish.objects.filter(
+            queryset = queryset.filter(
                 Q(name__icontains=query) | Q(description__icontains=query)
             )
-        return Dish.objects.all()
+        return queryset
 
 
 class DishDetailView(generic.DetailView):
     model = Dish
-
-
-class CookDetailView(generic.DetailView):
-    model = Cook
 
 
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
@@ -157,9 +166,3 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Dish
     template_name = "core/dish_confirm_delete.html"
     success_url = reverse_lazy("core:dish-list")
-
-
-class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
-    form_class = PasswordChangeForm
-    template_name = "registration/change_password.html"
-    success_url = reverse_lazy("authentication:profile")
